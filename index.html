@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essences — Aromaterapia & Fragancias</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0906;
+    --surface: #16110d;
+    --surface2: #1f1710;
+    --gold: #c9a96e;
+    --gold-light: #e4c98a;
+    --gold-dim: #8a6f40;
+    --cream: #f0e6d4;
+    --cream-dim: #a89880;
+    --muted: #5a4e42;
+    --white: #faf6f0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    color: var(--cream);
+    overflow-x: hidden;
+    cursor: default;
+    min-height: 100vh;
+  }
+
+  section {
+    width: min(100%, 1200px);
+    margin: 0 auto;
+  }
+
+  .section-header,
+  #aplicadores,
+  #catalogo,
+  #ambientes,
+  #contacto,
+  #filosofia {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 3rem;
+    background: linear-gradient(to bottom, rgba(11,9,6,0.95) 0%, transparent 100%);
+  }
+
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo svg { display: block; width: auto; height: 48px; }
+
+  .nav-logo span { font-style: italic; }
+
+  nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(250,246,240,0.35);
+    color: var(--cream);
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.45rem;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .nav-toggle:hover { background: rgba(255,255,255,0.1); }
+
+  nav a {
+    color: var(--cream-dim);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--gold); }
+  nav a:focus-visible { outline: 2px dashed var(--gold-light); outline-offset: 2px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: calc(1.4rem + 3rem) 1.5rem 4rem;
+    width: min(100%, 1200px);
+    margin: 0 auto;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 60%, rgba(201,169,110,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 20%, rgba(180,100,60,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 80%, rgba(100,140,120,0.05) 0%, transparent 60%);
+  }
+
+  /* Floating orbs */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: drift 12s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .orb-1 { width: 380px; height: 380px; background: rgba(201,169,110,0.07); top: 10%; left: 5%; animation-delay: 0s; }
+  .orb-2 { width: 300px; height: 300px; background: rgba(160,200,170,0.05); top: 50%; right: 5%; animation-delay: -4s; }
+  .orb-3 { width: 260px; height: 260px; background: rgba(200,120,80,0.05); bottom: 10%; left: 30%; animation-delay: -8s; }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.05); }
+    66% { transform: translate(-15px, 20px) scale(0.97); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s ease 0.15s both;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+    font-size: 0.6em;
+  }
+
+  .hero-sub {
+    font-size: 0.8rem;
+    font-weight: 200;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin: 2.5rem 0 3rem;
+    max-width: 38ch;
+    line-height: 2;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    transition: all 0.4s;
+    animation: fadeUp 1s ease 0.45s both;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+  }
+  .hero-cta:hover { color: var(--bg); border-color: var(--gold); }
+  .hero-cta:hover::before { transform: translateX(0); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    animation: fadeUp 1s ease 1s both;
+  }
+  .hero-scroll span {
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 3rem;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--muted), transparent); }
+  .divider-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+  }
+  .section-eyebrow {
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body {
+    font-size: 0.82rem;
+    font-weight: 200;
+    color: var(--cream-dim);
+    max-width: 52ch;
+    margin: 1.5rem auto 0;
+    line-height: 2;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PHILOSOPHY STRIP ── */
+  #filosofia {
+    padding: 5rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  .phil-vline { background: var(--muted); opacity: 0.3; align-self: stretch; }
+
+  .phil-item {
+    padding: 2rem 3rem;
+    text-align: center;
+  }
+  .phil-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .phil-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .phil-text {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: var(--cream-dim);
+    line-height: 1.9;
+  }
+
+  /* ── APLICADORES ── */
+  #aplicadores {
+    padding: 2rem 3rem 6rem;
+  }
+
+  .aplicadores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 3rem auto 0;
+  }
+
+  .aplicador-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,169,110,0.12);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.4s;
+  }
+  .aplicador-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,169,110,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .aplicador-card:hover {
+    border-color: rgba(201,169,110,0.4);
+    transform: translateY(-4px);
+  }
+
+  .aplicador-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .aplicador-type {
+    font-size: 0.58rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .aplicador-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .aplicador-vol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.35;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    line-height: 1;
+  }
+
+  .aplicador-desc {
+    font-size: 0.78rem;
+    font-weight: 200;
+    color: var(--cream-dim);
+    line-height: 1.9;
+    max-width: 28ch;
+  }
+
+  /* ── CATALOG ── */
+  #catalogo {
+    padding: 2rem 3rem 8rem;
+  }
+
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    background: transparent;
+    border: 0;
+    width: min(100%, 1200px);
+    justify-content: center;
+  }
+
+  .frag-card {
+    border: 1px solid rgba(201,169,110,0.1);
+    border-radius: 0.45rem;
+    background: var(--surface);
+  }
+
+  .frag-card:hover {
+    background: var(--surface2);
+  }
+
+  .frag-card {
+    background: var(--bg);
+    padding: 2.5rem 2rem;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.4s;
+    overflow: hidden;
+  }
+  .frag-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+  .frag-card:hover { background: var(--surface); }
+  .frag-card:hover::after { transform: scaleX(1); }
+
+  .frag-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 300;
+    color: var(--surface2);
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    line-height: 1;
+    user-select: none;
+    transition: color 0.4s;
+  }
+  .frag-card:hover .frag-number { color: rgba(201,169,110,0.1); }
+
+  .frag-category {
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 1rem;
+  }
+
+  .frag-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+
+  .frag-perfil {
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+
+  .frag-desc {
+    font-size: 0.75rem;
+    font-weight: 200;
+    color: var(--cream-dim);
+    line-height: 1.85;
+  }
+
+  .frag-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+  }
+  .frag-tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--muted);
+    padding: 0.2rem 0.6rem;
+  }
+
+  /* ── AMBIENTES ── */
+  #ambientes {
+    padding: 4rem 3rem 8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .amb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .amb-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,169,110,0.1);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: all 0.4s;
+  }
+  .amb-card:hover {
+    border-color: rgba(201,169,110,0.35);
+    transform: translateY(-6px);
+    background: var(--surface2);
+  }
+
+  .amb-icon { font-size: 2.2rem; margin-bottom: 1.2rem; display: block; }
+  .amb-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+  .amb-desc { font-size: 0.73rem; font-weight: 200; color: var(--cream-dim); line-height: 1.8; }
+
+  /* ── CTA BAND ── */
+  #contacto {
+    padding: 8rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #contacto::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,169,110,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .contact-title em { font-style: italic; color: var(--gold); }
+
+  .contact-sub {
+    font-size: 0.78rem;
+    font-weight: 200;
+    color: var(--cream-dim);
+    letter-spacing: 0.12em;
+    margin-bottom: 3rem;
+    line-height: 2;
+  }
+
+  .contact-btns {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1.1rem 2.8rem;
+    background: var(--gold);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1.1rem 2.8rem;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem;
+    border-top: 1px solid rgba(90,78,66,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+  }
+  .footer-logo em { font-style: italic; }
+
+  .footer-copy {
+    font-size: 0.65rem;
+    font-weight: 200;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav ul { gap: 1.5rem; }
+    #filosofia { grid-template-columns: 1fr; }
+    .phil-vline { display: none; }
+    .phil-item { padding: 2rem 1.5rem; }
+    .aplicadores-grid { grid-template-columns: 1fr; }
+    .amb-grid { grid-template-columns: 1fr 1fr; }
+    #hero, #aplicadores, #catalogo, #ambientes, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .divider { padding: 0 1.5rem; }
+    #contacto { padding: 5rem 1.5rem; }
+  }
+
+  @media (max-width: 560px) {
+    .nav-toggle { display: inline-flex; }
+    nav ul {
+      position: absolute;
+      top: 4.8rem;
+      right: 1.5rem;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 1rem 1rem;
+      background: rgba(11,9,6,0.95);
+      border: 1px solid rgba(201,169,110,0.35);
+      border-radius: 0.6rem;
+      display: none;
+      width: 180px;
+      z-index: 101;
+    }
+    nav ul.open { display: flex; }
+    .amb-grid { grid-template-columns: 1fr; }
+    .catalog-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo logo-hummingbird" aria-label="Aromas Sentimientos">
+    <svg width="170" height="48" viewBox="0 0 420 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="hue" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#C9A96E"/>
+          <stop offset="100%" stop-color="#E4C98A"/>
+        </linearGradient>
+      </defs>
+      <path d="M62 18c-8 10-24 14-33 4s-8-26 2-34 26-10 34 0 10 24 0 30z" fill="url(#hue)" opacity="0.8"/>
+      <path d="M62 18c-10 6-22 2-28-8m28 8c5-8 1-20-6-25" stroke="#F5E8C2" stroke-width="6" stroke-linecap="round"/>
+      <path d="M72 15c12 2 22 11 28 20 4 7 8 14 12 21 10 20 30 34 50 30 18-4 34-22 46-40 6-10 14-22 24-26" stroke="url(#hue)" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="60" cy="18" r="3" fill="#fff"/>
+      <text x="110" y="38" font-family="Cormorant Garamond, serif" font-size="36" font-weight="400" fill="url(#hue)">Aromas</text>
+      <text x="110" y="80" font-family="Cormorant Garamond, serif" font-size="36" font-weight="300" fill="#f5f0e6">Sentimientos</text>
+      <line x1="70" y1="18" x2="108" y2="40" stroke="url(#hue)" stroke-width="4" stroke-linecap="round" />
+    </svg>
+  </a>
+  <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+  <ul>
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#aplicadores">Presentaciones</a></li>
+    <li><a href="#catalogo">Fragancias</a></li>
+    <li><a href="#ambientes">Aplicación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <p class="hero-eyebrow">Aromaterapia &amp; Bienestar Sensorial</p>
+  <h1 class="hero-title">
+    El aroma<br>
+    <em>que te define</em>
+  </h1>
+  <p class="hero-sub">Fragancias artesanales seleccionadas para transformar tu espacio, tu cuerpo y tu energía interior</p>
+  <a href="#catalogo" class="hero-cta">Explorar colección →</a>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Descubrir</span>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- FILOSOFIA -->
+<section id="filosofia">
+  <div class="phil-item reveal">
+    <div class="phil-number">01</div>
+    <div class="phil-label">El Olfato</div>
+    <p class="phil-text">El único sentido con vía directa al sistema límbico. El aroma llega al corazón de tu memoria y tus emociones de forma casi instantánea, sin pasar por el pensamiento racional.</p>
+  </div>
+  <div class="phil-vline"></div>
+  <div class="phil-item reveal">
+    <div class="phil-number">02</div>
+    <div class="phil-label">La Esencia</div>
+    <p class="phil-text">Cada fragancia posee una vibración única que interactúa con tu propia energía. Seleccionamos cada esencia por su capacidad de evocar sensaciones transformadoras y sanadoras.</p>
+  </div>
+  <div class="phil-vline"></div>
+  <div class="phil-item reveal">
+    <div class="phil-number">03</div>
+    <div class="phil-label">El Equilibrio</div>
+    <p class="phil-text">No solo embellecemos el aire; ofrecemos herramientas para armonizar cada espacio de tu vida. El aroma adecuado convierte cualquier lugar en un santuario de paz.</p>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- APLICADORES -->
+<section id="aplicadores">
+  <div class="section-header">
+    <p class="section-eyebrow">Presentaciones</p>
+    <h2 class="section-title">Dos formatos,<br><em>infinitas experiencias</em></h2>
+    <p class="section-body">Elegí el aplicador ideal según tu uso. Nuestros envases están diseñados para una distribución perfecta del aroma en cada situación.</p>
+  </div>
+
+  <div class="aplicadores-grid">
+    <div class="aplicador-card reveal">
+      <span class="aplicador-icon">✦</span>
+      <div class="aplicador-type">Aplicador Premium</div>
+      <div class="aplicador-name">Spray Fino</div>
+      <p class="aplicador-desc">Bruma delicada y uniforme ideal para aplicar directamente sobre la ropa o la piel. Distribución sutil y prolongada que te acompaña durante todo el día.</p>
+      <div class="aplicador-vol">200<br><small style="font-size:0.35em;letter-spacing:0.2em">ML</small></div>
+    </div>
+    <div class="aplicador-card reveal">
+      <span class="aplicador-icon">◈</span>
+      <div class="aplicador-type">Aplicador Ambiente</div>
+      <div class="aplicador-name">Gatillo</div>
+      <p class="aplicador-desc">Mayor potencia y cobertura para aromatizar ambientes amplios, cortinas, tapizados y espacios del hogar. Un disparo transforma cualquier habitación.</p>
+      <div class="aplicador-vol">250<br><small style="font-size:0.35em;letter-spacing:0.2em">ML</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- CATALOGO -->
+<section id="catalogo">
+  <div class="section-header">
+    <p class="section-eyebrow">Colección Completa</p>
+    <h2 class="section-title">Nuestras<br><em>fragancias</em></h2>
+    <p class="section-body">Trece esencias únicas, cada una una invitación a un viaje interior distinto. Encontrá la que resuene con tu alma.</p>
+  </div>
+
+  <div class="catalog-grid">
+
+    <div class="frag-card reveal">
+      <div class="frag-number">01</div>
+      <div class="frag-category">Floral · Delicada</div>
+      <h3 class="frag-name">Magnolia</h3>
+      <div class="frag-perfil">Fresca con notas dulces</div>
+      <p class="frag-desc">Evoca la pureza y la calma del jardín primaveral. Una fragancia que despierta la serenidad y conecta con la belleza natural.</p>
+      <div class="frag-tags"><span class="frag-tag">Ropa</span><span class="frag-tag">Persona</span><span class="frag-tag">Casa</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">02</div>
+      <div class="frag-category">Floral · Intensa</div>
+      <h3 class="frag-name">Gardenias</h3>
+      <div class="frag-perfil">Fresca, intensa y atractiva</div>
+      <p class="frag-desc">Un aroma que cautiva y energiza el ambiente. La gardenia como símbolo de atracción irresistible y presencia vibrante.</p>
+      <div class="frag-tags"><span class="frag-tag">Ambiente</span><span class="frag-tag">Persona</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">03</div>
+      <div class="frag-category">Cítrica · Sofisticada</div>
+      <h3 class="frag-name">Bullbridge</h3>
+      <div class="frag-perfil">Sofisticada, cálida, fresca y cítrica</div>
+      <p class="frag-desc">Una fragancia compleja que identifica a la persona por su perfume. Elegancia y carácter único en cada aplicación.</p>
+      <div class="frag-tags"><span class="frag-tag">Firma</span><span class="frag-tag">Persona</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">04</div>
+      <div class="frag-category">Acuática · Revitalizante</div>
+      <h3 class="frag-name">Sandía y Pepino</h3>
+      <div class="frag-perfil">Revitalizante y fresca</div>
+      <p class="frag-desc">Ideal para momentos de fatiga. Aporta una frescura acuática que despierta los sentidos y restaura la energía vital.</p>
+      <div class="frag-tags"><span class="frag-tag">Auto</span><span class="frag-tag">Oficina</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">05</div>
+      <div class="frag-category">Suave · Hogareña</div>
+      <h3 class="frag-name">Softy</h3>
+      <div class="frag-perfil">Suave, fresca, limpia y reconfortante</div>
+      <p class="frag-desc">Transmite la sensación de sábanas limpias y un hogar acogedor. Confort y paz en estado puro.</p>
+      <div class="frag-tags"><span class="frag-tag">Ropa de cama</span><span class="frag-tag">Casa</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">06</div>
+      <div class="frag-category">Dulce · Floral</div>
+      <h3 class="frag-name">Almendra y Fresia</h3>
+      <div class="frag-perfil">Dulce y floral con calidez</div>
+      <p class="frag-desc">Brinda calidez y una sensación de abrazo constante. La ternura hecha aroma, perfecta para los momentos íntimos.</p>
+      <div class="frag-tags"><span class="frag-tag">Persona</span><span class="frag-tag">Ropa</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">07</div>
+      <div class="frag-category">Dulce · Etérea</div>
+      <h3 class="frag-name">Miel de Hadas</h3>
+      <div class="frag-perfil">Dulce y mágica</div>
+      <p class="frag-desc">Un aroma etéreo que invita a soñar y a la alegría. Como un cuento hecho fragancia, liviana y encantadora.</p>
+      <div class="frag-tags"><span class="frag-tag">Niños</span><span class="frag-tag">Ambiente</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">08</div>
+      <div class="frag-category">Cítrica · Energizante</div>
+      <h3 class="frag-name">Limón y Jengibre</h3>
+      <div class="frag-perfil">Cítrica y picante</div>
+      <p class="frag-desc">Energizante natural que ayuda a enfocar la mente. Ideal para espacios de trabajo y momentos que requieren concentración.</p>
+      <div class="frag-tags"><span class="frag-tag">Oficina</span><span class="frag-tag">Estudio</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">09</div>
+      <div class="frag-category">Tropical · Alegre</div>
+      <h3 class="frag-name">Coco y Melón</h3>
+      <div class="frag-perfil">Tropical y alegre</div>
+      <p class="frag-desc">Transporta a lugares soñados de playa y sol. Cierra los ojos y sentite en el paraíso con cada inhalación.</p>
+      <div class="frag-tags"><span class="frag-tag">Verano</span><span class="frag-tag">Auto</span><span class="frag-tag">Casa</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">10</div>
+      <div class="frag-category">Herbal · Meditativa</div>
+      <h3 class="frag-name">Té Verde</h3>
+      <div class="frag-perfil">Herbal y fresco</div>
+      <p class="frag-desc">Ayuda a la meditación y a la limpieza energética. Un momento de silencio interior en cada aplicación.</p>
+      <div class="frag-tags"><span class="frag-tag">Meditación</span><span class="frag-tag">Yoga</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">11</div>
+      <div class="frag-category">Natural · Zen</div>
+      <h3 class="frag-name">Bambú</h3>
+      <div class="frag-perfil">Zen y natural</div>
+      <p class="frag-desc">Una fragancia pura que conecta con lo esencial de la vida. Minimalismo olfativo en su máxima expresión.</p>
+      <div class="frag-tags"><span class="frag-tag">Spa</span><span class="frag-tag">Minimalista</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">12</div>
+      <div class="frag-category">Floral · Intensa</div>
+      <h3 class="frag-name">Jazmín</h3>
+      <div class="frag-perfil">Floral intenso y seductor</div>
+      <p class="frag-desc">Seductor y calmante al mismo tiempo. El jazmín como símbolo ancestral de sensualidad y paz nocturna.</p>
+      <div class="frag-tags"><span class="frag-tag">Noche</span><span class="frag-tag">Persona</span></div>
+    </div>
+
+    <div class="frag-card reveal">
+      <div class="frag-number">13</div>
+      <div class="frag-category">Masculina · Fresca</div>
+      <h3 class="frag-name">Cristóbal</h3>
+      <div class="frag-perfil">Fresco, limpio y seguro</div>
+      <p class="frag-desc">Una opción masculina que proyecta seguridad y paz envidiable. Sensorial, limpio y puro, para el hombre que sabe quién es.</p>
+      <div class="frag-tags"><span class="frag-tag">Hombre</span><span class="frag-tag">Persona</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- AMBIENTES -->
+<section id="ambientes">
+  <div class="section-header">
+    <p class="section-eyebrow">Modos de Uso</p>
+    <h2 class="section-title">Aromatizá<br><em>cada momento</em></h2>
+    <p class="section-body">Nuestras fragancias están pensadas para acompañarte en todos los ámbitos de tu vida cotidiana.</p>
+  </div>
+
+  <div class="amb-grid">
+    <div class="amb-card reveal">
+      <span class="amb-icon">🏡</span>
+      <div class="amb-name">Casa</div>
+      <p class="amb-desc">Aplicá en cortinas, alfombras o en el aire para crear una atmósfera de serenidad y revitalización en tu hogar.</p>
+    </div>
+    <div class="amb-card reveal">
+      <span class="amb-icon">🚗</span>
+      <div class="amb-name">Auto</div>
+      <p class="amb-desc">Convertí cada trayecto en un momento de paz. Fragancias revitalizantes para mantener la mente despejada.</p>
+    </div>
+    <div class="amb-card reveal">
+      <span class="amb-icon">👗</span>
+      <div class="amb-name">Ropa</div>
+      <p class="amb-desc">Llevá la frescura todo el día. Una sutil bruma sobre tus prendas para que el aroma te acompañe en cada paso.</p>
+    </div>
+    <div class="amb-card reveal">
+      <span class="amb-icon">✨</span>
+      <div class="amb-name">Persona</div>
+      <p class="amb-desc">La conexión definitiva. Elegí la fragancia que más resuene con tu alma y convertila en tu sello personal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <h2 class="contact-title">¿Listo para encontrar<br><em>tu fragancia?</em></h2>
+  <p class="contact-sub">Contactanos para consultas, pedidos o para recibir asesoramiento personalizado.<br>Te ayudamos a encontrar la esencia que mejor resuene con vos.</p>
+  <div class="contact-btns">
+    <a href="https://api.whatsapp.com/send?phone=5491158226606&text=Hola%20-%20estoy%20interesado%20en%20tus%20fragancias" target="_blank" rel="noopener noreferrer" class="btn-primary">💬 &nbsp;Escribinos por WhatsApp 11 5822-6606 o por Email a Aromasysentimientos@gmail.com</a>
+  </div>
+  <div style="margin-top: 1rem; display: flex; justify-content: center;">
+    <a href="catalogo_PDF/catalogo-productos.pdf" download class="btn-secondary">📰 &nbsp;Descargar Catálogo de Productos (PDF)</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ess<em>ences</em></div>
+  <div class="footer-copy">© 2025 Essences — Aromaterapia &amp; Fragancias. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 80
+      ? 'rgba(11,9,6,0.97)'
+      : 'linear-gradient(to bottom, rgba(11,9,6,0.95) 0%, transparent 100%)';
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('nav ul');
+
+  navToggle?.addEventListener('click', () => {
+    navMenu?.classList.toggle('open');
+  });
+
+  navMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navMenu.classList.remove('open'));
+  });
+</script>
+</body>
+</html>
