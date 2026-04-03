@@ -574,6 +574,248 @@
   }
   .amb-desc { font-size: 0.73rem; font-weight: 200; color: var(--cream-dim); line-height: 1.8; }
 
+  /* ── QUIZ SECTION ── */
+  #quiz-container {
+    padding: 2rem 3rem 8rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  [data-pregunta] {
+    display: none;
+    animation: fadeUp 0.6s ease;
+  }
+
+  [data-pregunta].visible {
+    display: block;
+  }
+
+  .quiz-pregunta {
+    background: var(--surface);
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 3rem;
+    border-radius: 0.45rem;
+    margin-bottom: 2rem;
+  }
+
+  .quiz-pregunta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .quiz-pregunta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 2rem;
+  }
+
+  .quiz-opciones {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .quiz-opcion {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    background: rgba(201,169,110,0.05);
+    border: 1px solid rgba(201,169,110,0.1);
+    border-radius: 0.35rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .quiz-opcion:hover {
+    background: rgba(201,169,110,0.1);
+    border-color: rgba(201,169,110,0.3);
+  }
+
+  .quiz-opcion input[type="radio"] {
+    margin-top: 0.3rem;
+    cursor: pointer;
+    accent-color: var(--gold);
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .quiz-opcion-contenido {
+    flex: 1;
+  }
+
+  .quiz-opcion-titulo {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .quiz-opcion-desc {
+    font-size: 0.75rem;
+    color: var(--cream-dim);
+  }
+
+  .quiz-datos {
+    background: var(--surface);
+    border: 1px solid rgba(201,169,110,0.15);
+    padding: 2.5rem;
+    border-radius: 0.45rem;
+    margin-bottom: 2rem;
+  }
+
+  .quiz-input {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .quiz-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .quiz-input-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .quiz-input-group input {
+    background: var(--bg);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--cream);
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 0.3rem;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .quiz-input-group input::placeholder {
+    color: var(--cream-dim);
+  }
+
+  .quiz-input-group input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(201,169,110,0.1);
+  }
+
+  /* Error messages in real-time */
+  .campo-error {
+    display: none;
+    font-size: 0.7rem;
+    color: #ff6b6b;
+    margin-top: 0.35rem;
+    letter-spacing: 0.05em;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Visual feedback for inputs */
+  .quiz-input-group input[style*="border-color: rgb(201, 169, 110)"] {
+    background: rgba(201, 169, 110, 0.03);
+  }
+
+  .quiz-input-group input[style*="border-color: rgb(255, 107, 107)"] {
+    background: rgba(255, 107, 107, 0.05);
+  }
+
+  .quiz-botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .btn-quiz {
+    padding: 1rem 2rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold-dim);
+    background: transparent;
+    color: var(--gold);
+    cursor: pointer;
+    border-radius: 0.3rem;
+    transition: all 0.3s;
+  }
+
+  .btn-quiz:hover {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+  }
+
+  .btn-quiz-primary {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+  }
+
+  .btn-quiz-primary:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  .progreso-quiz {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+
+  .progreso-barra {
+    flex: 1;
+    height: 3px;
+    background: var(--muted);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progreso-llenar {
+    height: 100%;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .progreso-texto {
+    font-size: 0.7rem;
+    color: var(--cream-dim);
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+  }
+
+  #quiz-resultado {
+    display: none;
+    margin-bottom: 3rem;
+  }
+
+  .resultado-card {
+    background: var(--surface);
+    border: 2px solid var(--gold-dim);
+    padding: 3rem;
+    border-radius: 0.45rem;
+  }
+
   /* ── CTA BAND ── */
   #contacto {
     padding: 8rem 3rem;
@@ -749,6 +991,7 @@
     <li><a href="#aplicadores">Presentaciones</a></li>
     <li><a href="#catalogo">Fragancias</a></li>
     <li><a href="#ambientes">Aplicación</a></li>
+    <li><a href="#quiz-container">Quiz</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
@@ -995,6 +1238,266 @@
   </div>
 </section>
 
+<!-- DIVIDER -->
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- QUIZ ENCUENTRA TU FRAGANCIA -->
+<section id="quiz-container">
+  <div class="section-header">
+    <p class="section-eyebrow">Descubre tu Esencia</p>
+    <h2 class="section-title">Encuentra<br><em>tu fragancia perfecta</em></h2>
+    <p class="section-body">Responde algunas preguntas sobre tus preferencias emocionales y aromáticas. Nuestro quiz te recomendará la fragancia ideal para ti.</p>
+  </div>
+
+  <!-- BARRA DE PROGRESO -->
+  <div class="progreso-quiz">
+    <div class="progreso-barra">
+      <div class="progreso-llenar" id="progreso-llenar" style="width: 0%"></div>
+    </div>
+    <span class="progreso-texto"><span id="paso-actual">1</span>/6</span>
+  </div>
+
+  <!-- PREGUNTA 1: BIENESTAR EMOCIONAL -->
+  <div data-pregunta="emo_feeling" id="pregunta-1" class="visible">
+    <div class="quiz-pregunta">
+      <label class="quiz-pregunta-label">Pregunta 1 de 6</label>
+      <h3 class="quiz-pregunta-title">¿Cómo te sientes hoy?</h3>
+      <div class="quiz-opciones">
+        <label class="quiz-opcion">
+          <input type="radio" name="bienestar" value="calma" onchange="seleccionarRespuesta('emo_feeling', 'calma'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🧘 Necesito Calma</div>
+            <div class="quiz-opcion-desc">Estresado, cansado o buscando paz interior</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="bienestar" value="energia" onchange="seleccionarRespuesta('emo_feeling', 'energia'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">⚡ Necesito Energía</div>
+            <div class="quiz-opcion-desc">Fatigado, sin motivación, necesito vitalidad</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="bienestar" value="seduccion" onchange="seleccionarRespuesta('emo_feeling', 'seduccion'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">✨ Necesito Seducción</div>
+            <div class="quiz-opcion-desc">Quiero atracción, sensualidad y misterio</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="bienestar" value="bienestar" onchange="seleccionarRespuesta('emo_feeling', 'bienestar'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🌿 Necesito Equilibrio</div>
+            <div class="quiz-opcion-desc">Busco balance, armonía y bienestar integral</div>
+          </div>
+        </label>
+      </div>
+      <div class="quiz-botones" style="margin-top: 2rem;">
+        <button class="btn-quiz btn-quiz-primary" onclick="siguientePregunta(2)">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTA 2: ESTADO DE ÁNIMO SECUNDARIO -->
+  <div data-pregunta="emo_mood" id="pregunta-2">
+    <div class="quiz-pregunta">
+      <label class="quiz-pregunta-label">Pregunta 2 de 6</label>
+      <h3 class="quiz-pregunta-title">Si tuvieras que elegir otro sentimiento...</h3>
+      <div class="quiz-opciones">
+        <label class="quiz-opcion">
+          <input type="radio" name="mood" value="calma" onchange="seleccionarRespuesta('emo_mood', 'calma'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🧘 Calma</div>
+            <div class="quiz-opcion-desc">Paz, tranquilidad, meditación</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="mood" value="energia" onchange="seleccionarRespuesta('emo_mood', 'energia'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">⚡ Energía</div>
+            <div class="quiz-opcion-desc">Vitalidad, claridad, concentración</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="mood" value="bienestar" onchange="seleccionarRespuesta('emo_mood', 'bienestar'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">💝 Bienestar</div>
+            <div class="quiz-opcion-desc">Calidez, afecto, comodidad</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="mood" value="seduccion" onchange="seleccionarRespuesta('emo_mood', 'seduccion'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">✨ Sensualidad</div>
+            <div class="quiz-opcion-desc">Seducción, misterio, encanto</div>
+          </div>
+        </label>
+      </div>
+      <div class="quiz-botones" style="margin-top: 2rem;">
+        <button class="btn-quiz" onclick="siguientePregunta(1)">← Anterior</button>
+        <button class="btn-quiz btn-quiz-primary" onclick="siguientePregunta(3)">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTA 3: TIPO DE AROMA -->
+  <div data-pregunta="aroma_type" id="pregunta-3">
+    <div class="quiz-pregunta">
+      <label class="quiz-pregunta-label">Pregunta 3 de 6</label>
+      <h3 class="quiz-pregunta-title">¿Qué tipo de aromas prefieres?</h3>
+      <div class="quiz-opciones">
+        <label class="quiz-opcion">
+          <input type="radio" name="aroma" value="floral" onchange="seleccionarRespuesta('aroma_type', 'floral'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🌸 Floral</div>
+            <div class="quiz-opcion-desc">Flores, délico y romántico</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="aroma" value="citrica" onchange="seleccionarRespuesta('aroma_type', 'citrica'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🍋 Cítrica</div>
+            <div class="quiz-opcion-desc">Limón, naranja, fresco y vivaz</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="aroma" value="dulce" onchange="seleccionarRespuesta('aroma_type', 'dulce'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🍯 Dulce</div>
+            <div class="quiz-opcion-desc">Caramelo, miel, confortable</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="aroma" value="fresca" onchange="seleccionarRespuesta('aroma_type', 'fresca'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">❄️ Fresca</div>
+            <div class="quiz-opcion-desc">Acuática, limpia, revitalizante</div>
+          </div>
+        </label>
+      </div>
+      <div class="quiz-botones" style="margin-top: 2rem;">
+        <button class="btn-quiz" onclick="siguientePregunta(2)">← Anterior</button>
+        <button class="btn-quiz btn-quiz-primary" onclick="siguientePregunta(4)">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTA 4: USO PRINCIPAL -->
+  <div data-pregunta="uso_principal" id="pregunta-4">
+    <div class="quiz-pregunta">
+      <label class="quiz-pregunta-label">Pregunta 4 de 6</label>
+      <h3 class="quiz-pregunta-title">¿Dónde usarías principalmente la fragancia?</h3>
+      <div class="quiz-opciones">
+        <label class="quiz-opcion">
+          <input type="radio" name="uso" value="Persona" onchange="seleccionarRespuesta('uso_principal', 'Persona'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">✨ En mi Persona</div>
+            <div class="quiz-opcion-desc">Como perfume personal, mi firma olfativa</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="uso" value="Ropa" onchange="seleccionarRespuesta('uso_principal', 'Ropa'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">👗 En mi Ropa</div>
+            <div class="quiz-opcion-desc">Para que mis prendas huelan bien</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="uso" value="Ambiente" onchange="seleccionarRespuesta('uso_principal', 'Ambiente'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🏡 En mi Ambiente</div>
+            <div class="quiz-opcion-desc">Para aromatizar mi casa o espacio</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="uso" value="Oficina" onchange="seleccionarRespuesta('uso_principal', 'Oficina'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">📚 En mi Oficina</div>
+            <div class="quiz-opcion-desc">Para mejorar concentración y ambiente laboral</div>
+          </div>
+        </label>
+      </div>
+      <div class="quiz-botones" style="margin-top: 2rem;">
+        <button class="btn-quiz" onclick="siguientePregunta(3)">← Anterior</button>
+        <button class="btn-quiz btn-quiz-primary" onclick="siguientePregunta(5)">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTA 5: PREFERENCIA TEMPORAL -->
+  <div data-pregunta="preferencia_temporal" id="pregunta-5">
+    <div class="quiz-pregunta">
+      <label class="quiz-pregunta-label">Pregunta 5 de 6</label>
+      <h3 class="quiz-pregunta-title">¿Cuándo prefieres usar fragancias?</h3>
+      <div class="quiz-opciones">
+        <label class="quiz-opcion">
+          <input type="radio" name="temporal" value="dia" onchange="seleccionarRespuesta('preferencia_temporal', 'dia'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">☀️ Durante el Día</div>
+            <div class="quiz-opcion-desc">Fresco, energético, que no sea muy fuerte</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="temporal" value="noche" onchange="seleccionarRespuesta('preferencia_temporal', 'noche'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🌙 Por la Noche</div>
+            <div class="quiz-opcion-desc">Profundo, sensual, con presencia</div>
+          </div>
+        </label>
+        <label class="quiz-opcion">
+          <input type="radio" name="temporal" value="ambos" onchange="seleccionarRespuesta('preferencia_temporal', 'ambos'); actualizarProgreso()">
+          <div class="quiz-opcion-contenido">
+            <div class="quiz-opcion-titulo">🔄 Ambos Momentos</div>
+            <div class="quiz-opcion-desc">Versátil, que funcione en cualquier ocasión</div>
+          </div>
+        </label>
+      </div>
+      <div class="quiz-botones" style="margin-top: 2rem;">
+        <button class="btn-quiz" onclick="siguientePregunta(4)">← Anterior</button>
+        <button class="btn-quiz btn-quiz-primary" onclick="siguientePregunta(6)">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREGUNTA 6: DATOS DE CONTACTO -->
+  <div data-pregunta="datos" id="pregunta-6">
+    <div class="quiz-pregunta">
+      <label class="quiz-pregunta-label">Pregunta 6 de 6</label>
+      <h3 class="quiz-pregunta-title">Completa tus datos</h3>
+      <p class="section-body" style="margin-bottom: 1.5rem;">Necesitamos esta información para personalizar tu resultado y compartir la recomendación contigo.</p>
+      
+      <div class="quiz-datos">
+        <div class="quiz-input">
+          <div class="quiz-input-group">
+            <label for="nombre-usuario">Nombre (sin números) *</label>
+            <input type="text" id="nombre-usuario" placeholder="Juan Pérez (ej: María, Juan Carlos)" required>
+          </div>
+          <div class="quiz-input-group">
+            <label for="email-usuario">Email *</label>
+            <input type="email" id="email-usuario" placeholder="tu@email.com (ej: usuario@gmail.com)" required>
+          </div>
+          <div class="quiz-input-group">
+            <label for="telefono-usuario">Teléfono *</label>
+            <input type="tel" id="telefono-usuario" placeholder="+54 11 XXXX-XXXX (ej: +5491158226606)" required>
+          </div>
+        </div>
+        
+        <p style="font-size: 0.75rem; color: var(--cream-dim); margin-bottom: 1.5rem; text-align: justify;">
+          📧 <strong>Privacidad:</strong> Tus datos serán guardados de forma segura en Supabase. Nunca compartimos tu información con terceros. Solo usaremos tu email para enviarte detalles sobre tu fragancia recomendada.
+        </p>
+      </div>
+
+      <div class="quiz-botones" style="margin-top: 2rem;">
+        <button class="btn-quiz" onclick="siguientePregunta(5)">← Anterior</button>
+        <button class="btn-quiz btn-quiz-primary" onclick="finalizarQuiz()">✨ Ver Mi Fragancia →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="quiz-resultado"></div>
+</section>
+
 <!-- CONTACTO -->
 <section id="contacto">
   <h2 class="contact-title">¿Listo para encontrar<br><em>tu fragancia?</em></h2>
@@ -1045,6 +1548,33 @@
   navMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navMenu.classList.remove('open'));
   });
+
+  // ========================================
+  // FUNCIONES HELPER PARA EL QUIZ
+  // ========================================
+  function actualizarProgreso() {
+    let preguntaActual = 1;
+    const preguntas = ['pregunta-1', 'pregunta-2', 'pregunta-3', 'pregunta-4', 'pregunta-5', 'pregunta-6'];
+    
+    preguntas.forEach((id, idx) => {
+      if (document.getElementById(id).classList.contains('visible')) {
+        preguntaActual = idx + 1;
+      }
+    });
+
+    const progreso = (preguntaActual / 6) * 100;
+    document.getElementById('progreso-llenar').style.width = progreso + '%';
+    document.getElementById('paso-actual').textContent = preguntaActual;
+  }
 </script>
+
+<!-- LIBRERÍA SUPABASE (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- CONFIGURACIÓN SUPABASE -->
+<script src="./supabase-config.js"></script>
+
+<!-- LÓGICA PRINCIPAL DEL QUIZ -->
+<script src="./quiz-fragancia.js" defer></script>
 </body>
 </html>
