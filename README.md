@@ -3,6 +3,7 @@
 **Versión:** 2.0 (with Quiz + Supabase)  
 **Estado:** ✅ LISTO PARA PRODUCCIÓN  
 **Última actualización:** 3 de Abril 2026
+# https://aromassentimientos.netlify.app/
 
 ---
 
