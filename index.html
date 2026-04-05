@@ -4,12 +4,66 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Essences — Aromaterapia & Fragancias</title>
-<meta name="description" content="Aromas Sentimientos: fragancias y aromaterapia premium para tu hogar y bienestar emocional. Descubre colecciones artesanales, presentación y aplicaciones para cada ambiente." />
+<meta name="description" content="Fragancias y aromaterapia premium para tu hogar y bienestar. Descubre colecciones artesanales para cada ambiente." />
 <meta name="robots" content="index, follow" />
 <meta name="google-site-verification" content="google8eef4f14186aec6c" />
 <link rel="canonical" href="https://aromassentimientos.netlify.app/" />
 <link rel="alternate" hreflang="es" href="https://aromassentimientos.netlify.app/" />
+<link rel="alternate" hreflang="x-default" href="https://aromassentimientos.netlify.app/" />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+<!-- Datos Estructurados JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Aromas Sentimientos",
+  "description": "Fragancias y aromaterapia premium para tu hogar y bienestar emocional",
+  "url": "https://aromassentimientos.netlify.app/",
+  "logo": "https://aromassentimientos.netlify.app/favicon.ico",
+  "image": "https://aromassentimientos.netlify.app/og-image.jpg",
+  "brand": {
+    "@type": "Brand",
+    "name": "Essences"
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "USD"
+  },
+  "mainEntity": {
+    "@type": "Product",
+    "name": "Fragancias Artesanales",
+    "description": "Colección de fragancias artesanales para aromaterapia y bienestar",
+    "category": "Home Fragrances",
+    "brand": {
+      "@type": "Brand",
+      "name": "Essences"
+    }
+  }
+}
+</script>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://aromassentimientos.netlify.app/" />
+<meta property="og:title" content="Essences — Aromaterapia & Fragancias" />
+<meta property="og:description" content="Fragancias y aromaterapia premium para tu hogar y bienestar. Descubre colecciones artesanales para cada ambiente." />
+<meta property="og:image" content="https://aromassentimientos.netlify.app/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Aromas Sentimientos" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://aromassentimientos.netlify.app/" />
+<meta name="twitter:title" content="Essences — Aromaterapia & Fragancias" />
+<meta name="twitter:description" content="Fragancias y aromaterapia premium para tu hogar y bienestar. Descubre colecciones artesanales para cada ambiente." />
+<meta name="twitter:image" content="https://aromassentimientos.netlify.app/og-image.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -929,6 +983,19 @@
     #hero, #aplicadores, #catalogo, #ambientes, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
     .divider { padding: 0 1.5rem; }
     #contacto { padding: 5rem 1.5rem; }
+    
+    /* Mobile-first font sizes (minimum 14px for readability) */
+    body { font-size: 16px; }
+    nav a { font-size: 0.85rem; }
+    .hero-eyebrow { font-size: 0.75rem; }
+    .hero-sub { font-size: 0.9rem; }
+    .section-eyebrow { font-size: 0.7rem; }
+    .section-body { font-size: 0.9rem; }
+    .phil-text { font-size: 0.9rem; }
+    .aplicador-desc { font-size: 0.85rem; }
+    .frag-desc { font-size: 0.85rem; }
+    .amb-desc { font-size: 0.85rem; }
+    .footer-copy { font-size: 0.75rem; }
   }
 
   @media (max-width: 560px) {
@@ -950,6 +1017,33 @@
     nav ul.open { display: flex; }
     .amb-grid { grid-template-columns: 1fr; }
     .catalog-grid { grid-template-columns: 1fr; }
+    
+    /* Ensure minimum touch target size of 48x48px for buttons and links */
+    nav a { 
+      min-height: 48px; 
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+    }
+    .btn-primary, .btn-secondary, .hero-cta, .btn-quiz {
+      min-height: 48px;
+      min-width: 48px;
+      padding: 1rem 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quiz-opcion {
+      min-height: 48px;
+      padding: 1rem;
+    }
+    .aplicador-card, .frag-card, .amb-card {
+      padding: 2rem 1.5rem;
+    }
+    .phil-item { padding: 1.5rem 1rem; }
+    .quiz-pregunta { padding: 2rem 1.5rem; }
+    .quiz-datos { padding: 2rem 1.5rem; }
+    .resultado-card { padding: 2rem 1.5rem; }
   }
 
   /* ── SCROLL ANIMATIONS ── */
@@ -1003,12 +1097,12 @@
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
 
-  <p class="hero-eyebrow">Aromaterapia &amp; Bienestar Sensorial</p>
+  <p class="hero-eyebrow">Aromaterapia &amp; Bienestar</p>
   <h1 class="hero-title">
     El aroma<br>
     <em>que te define</em>
   </h1>
-  <p class="hero-sub">Fragancias artesanales seleccionadas para transformar tu espacio, tu cuerpo y tu energía interior</p>
+  <p class="hero-sub">Fragancias artesanales seleccionadas para transformar tu espacio, tu cuerpo y tu energía</p>
   <a href="#catalogo" class="hero-cta">Explorar colección →</a>
 
   <div class="hero-scroll">
@@ -1025,19 +1119,19 @@
   <div class="phil-item reveal">
     <div class="phil-number">01</div>
     <div class="phil-label">El Olfato</div>
-    <p class="phil-text">El único sentido con vía directa al sistema límbico. El aroma llega al corazón de tu memoria y tus emociones de forma casi instantánea, sin pasar por el pensamiento racional.</p>
+    <p class="phil-text">El olfato es el único sentido que va directo a tus emociones. Los aromas llegan a tu memoria y sentimientos de forma instantánea, sin pasar por la razón.</p>
   </div>
   <div class="phil-vline"></div>
   <div class="phil-item reveal">
     <div class="phil-number">02</div>
     <div class="phil-label">La Esencia</div>
-    <p class="phil-text">Cada fragancia posee una vibración única que interactúa con tu propia energía. Seleccionamos cada esencia por su capacidad de evocar sensaciones transformadoras y sanadoras.</p>
+    <p class="phil-text">Cada fragancia tiene una vibración única que se conecta con tu energía. Elegimos cada esencia por su poder para transformar cómo te sientes.</p>
   </div>
   <div class="phil-vline"></div>
   <div class="phil-item reveal">
     <div class="phil-number">03</div>
     <div class="phil-label">El Equilibrio</div>
-    <p class="phil-text">No solo embellecemos el aire; ofrecemos herramientas para armonizar cada espacio de tu vida. El aroma adecuado convierte cualquier lugar en un santuario de paz.</p>
+    <p class="phil-text">No solo perfumamos el aire; creamos herramientas para armonizar cada espacio de tu vida. El aroma correcto convierte cualquier lugar en un refugio de paz.</p>
   </div>
 </section>
 
@@ -1049,7 +1143,7 @@
   <div class="section-header">
     <p class="section-eyebrow">Presentaciones</p>
     <h2 class="section-title">Dos formatos,<br><em>infinitas experiencias</em></h2>
-    <p class="section-body">Elegí el aplicador ideal según tu uso. Nuestros envases están diseñados para una distribución perfecta del aroma en cada situación.</p>
+    <p class="section-body">Elige el aplicador ideal para cada uso. Nuestros envases distribuyen el aroma de forma perfecta en cada situación.</p>
   </div>
 
   <div class="aplicadores-grid">
@@ -1057,14 +1151,14 @@
       <span class="aplicador-icon">✦</span>
       <div class="aplicador-type">Aplicador Premium</div>
       <div class="aplicador-name">Spray Fino</div>
-      <p class="aplicador-desc">Bruma delicada y uniforme ideal para aplicar directamente sobre la ropa o la piel. Distribución sutil y prolongada que te acompaña durante todo el día.</p>
+      <p class="aplicador-desc">Bruma suave y uniforme ideal para aplicar sobre la ropa o la piel. Aroma sutil y duradero que te acompaña todo el día.</p>
       <div class="aplicador-vol">200<br><small style="font-size:0.35em;letter-spacing:0.2em">ML</small></div>
     </div>
     <div class="aplicador-card reveal">
       <span class="aplicador-icon">◈</span>
       <div class="aplicador-type">Aplicador Ambiente</div>
       <div class="aplicador-name">Gatillo</div>
-      <p class="aplicador-desc">Mayor potencia y cobertura para aromatizar ambientes amplios, cortinas, tapizados y espacios del hogar. Un disparo transforma cualquier habitación.</p>
+      <p class="aplicador-desc">Mayor potencia para aromatizar espacios amplios, cortinas y tapizados. Un disparo transforma cualquier habitación.</p>
       <div class="aplicador-vol">250<br><small style="font-size:0.35em;letter-spacing:0.2em">ML</small></div>
     </div>
   </div>
@@ -1078,7 +1172,7 @@
   <div class="section-header">
     <p class="section-eyebrow">Colección Completa</p>
     <h2 class="section-title">Nuestras<br><em>fragancias</em></h2>
-    <p class="section-body">Trece esencias únicas, cada una una invitación a un viaje interior distinto. Encontrá la que resuene con tu alma.</p>
+    <p class="section-body">Trece esencias únicas, cada una un viaje interior diferente. Encuentra la que conecta contigo.</p>
   </div>
 
   <div class="catalog-grid">
@@ -1088,7 +1182,7 @@
       <div class="frag-category">Floral · Delicada</div>
       <h3 class="frag-name">Magnolia</h3>
       <div class="frag-perfil">Fresca con notas dulces</div>
-      <p class="frag-desc">Evoca la pureza y la calma del jardín primaveral. Una fragancia que despierta la serenidad y conecta con la belleza natural.</p>
+      <p class="frag-desc">Evoca la pureza y calma de un jardín en primavera. Una fragancia que trae serenidad y conecta con la belleza natural.</p>
       <div class="frag-tags"><span class="frag-tag">Ropa</span><span class="frag-tag">Persona</span><span class="frag-tag">Casa</span></div>
     </div>
 
@@ -1097,7 +1191,7 @@
       <div class="frag-category">Floral · Intensa</div>
       <h3 class="frag-name">Gardenias</h3>
       <div class="frag-perfil">Fresca, intensa y atractiva</div>
-      <p class="frag-desc">Un aroma que cautiva y energiza el ambiente. La gardenia como símbolo de atracción irresistible y presencia vibrante.</p>
+      <p class="frag-desc">Un aroma que atrae y llena de energía el ambiente. La gardenia como símbolo de presencia vibrante.</p>
       <div class="frag-tags"><span class="frag-tag">Ambiente</span><span class="frag-tag">Persona</span></div>
     </div>
 
@@ -1106,7 +1200,7 @@
       <div class="frag-category">Cítrica · Sofisticada</div>
       <h3 class="frag-name">Bullbridge</h3>
       <div class="frag-perfil">Sofisticada, cálida, fresca y cítrica</div>
-      <p class="frag-desc">Una fragancia compleja que identifica a la persona por su perfume. Elegancia y carácter único en cada aplicación.</p>
+      <p class="frag-desc">Una fragancia compleja que te identifica. Elegancia y carácter único en cada aplicación.</p>
       <div class="frag-tags"><span class="frag-tag">Firma</span><span class="frag-tag">Persona</span></div>
     </div>
 
@@ -1115,7 +1209,7 @@
       <div class="frag-category">Acuática · Revitalizante</div>
       <h3 class="frag-name">Sandía y Pepino</h3>
       <div class="frag-perfil">Revitalizante y fresca</div>
-      <p class="frag-desc">Ideal para momentos de fatiga. Aporta una frescura acuática que despierta los sentidos y restaura la energía vital.</p>
+      <p class="frag-desc">Ideal para cuando estás cansado. Aporta frescura que despierta los sentidos y restaura tu energía.</p>
       <div class="frag-tags"><span class="frag-tag">Auto</span><span class="frag-tag">Oficina</span></div>
     </div>
 
@@ -1133,7 +1227,7 @@
       <div class="frag-category">Dulce · Floral</div>
       <h3 class="frag-name">Almendra y Fresia</h3>
       <div class="frag-perfil">Dulce y floral con calidez</div>
-      <p class="frag-desc">Brinda calidez y una sensación de abrazo constante. La ternura hecha aroma, perfecta para los momentos íntimos.</p>
+      <p class="frag-desc">Brinda calidez y una sensación de abrazo constante. La ternura hecha aroma, perfecta para momentos íntimos.</p>
       <div class="frag-tags"><span class="frag-tag">Persona</span><span class="frag-tag">Ropa</span></div>
     </div>
 
@@ -1142,7 +1236,7 @@
       <div class="frag-category">Dulce · Etérea</div>
       <h3 class="frag-name">Miel de Hadas</h3>
       <div class="frag-perfil">Dulce y mágica</div>
-      <p class="frag-desc">Un aroma etéreo que invita a soñar y a la alegría. Como un cuento hecho fragancia, liviana y encantadora.</p>
+      <p class="frag-desc">Un aroma que invita a soñar y a la alegría. Como un cuento hecho fragancia, liviano y encantador.</p>
       <div class="frag-tags"><span class="frag-tag">Niños</span><span class="frag-tag">Ambiente</span></div>
     </div>
 
@@ -1151,7 +1245,7 @@
       <div class="frag-category">Cítrica · Energizante</div>
       <h3 class="frag-name">Limón y Jengibre</h3>
       <div class="frag-perfil">Cítrica y picante</div>
-      <p class="frag-desc">Energizante natural que ayuda a enfocar la mente. Ideal para espacios de trabajo y momentos que requieren concentración.</p>
+      <p class="frag-desc">Energizante natural que ayuda a concentrarte. Ideal para espacios de trabajo y momentos que requieren atención.</p>
       <div class="frag-tags"><span class="frag-tag">Oficina</span><span class="frag-tag">Estudio</span></div>
     </div>
 
@@ -1160,7 +1254,7 @@
       <div class="frag-category">Tropical · Alegre</div>
       <h3 class="frag-name">Coco y Melón</h3>
       <div class="frag-perfil">Tropical y alegre</div>
-      <p class="frag-desc">Transporta a lugares soñados de playa y sol. Cierra los ojos y sentite en el paraíso con cada inhalación.</p>
+      <p class="frag-desc">Te lleva a lugares de playa y sol. Cierra los ojos y siéntete en el paraíso con cada inhalación.</p>
       <div class="frag-tags"><span class="frag-tag">Verano</span><span class="frag-tag">Auto</span><span class="frag-tag">Casa</span></div>
     </div>
 
@@ -1169,7 +1263,7 @@
       <div class="frag-category">Herbal · Meditativa</div>
       <h3 class="frag-name">Té Verde</h3>
       <div class="frag-perfil">Herbal y fresco</div>
-      <p class="frag-desc">Ayuda a la meditación y a la limpieza energética. Un momento de silencio interior en cada aplicación.</p>
+      <p class="frag-desc">Ayuda a meditar y limpiar la energía. Un momento de silencio interior en cada aplicación.</p>
       <div class="frag-tags"><span class="frag-tag">Meditación</span><span class="frag-tag">Yoga</span></div>
     </div>
 
@@ -1178,7 +1272,7 @@
       <div class="frag-category">Natural · Zen</div>
       <h3 class="frag-name">Bambú</h3>
       <div class="frag-perfil">Zen y natural</div>
-      <p class="frag-desc">Una fragancia pura que conecta con lo esencial de la vida. Minimalismo olfativo en su máxima expresión.</p>
+      <p class="frag-desc">Una fragancia pura que conecta con lo esencial. Minimalismo olfativo en su máxima expresión.</p>
       <div class="frag-tags"><span class="frag-tag">Spa</span><span class="frag-tag">Minimalista</span></div>
     </div>
 
@@ -1187,7 +1281,7 @@
       <div class="frag-category">Floral · Intensa</div>
       <h3 class="frag-name">Jazmín</h3>
       <div class="frag-perfil">Floral intenso y seductor</div>
-      <p class="frag-desc">Seductor y calmante al mismo tiempo. El jazmín como símbolo ancestral de sensualidad y paz nocturna.</p>
+      <p class="frag-desc">Seductor y calmante a la vez. El jazmín como símbolo de sensualidad y paz nocturna.</p>
       <div class="frag-tags"><span class="frag-tag">Noche</span><span class="frag-tag">Persona</span></div>
     </div>
 
@@ -1196,7 +1290,7 @@
       <div class="frag-category">Masculina · Fresca</div>
       <h3 class="frag-name">Cristóbal</h3>
       <div class="frag-perfil">Fresco, limpio y seguro</div>
-      <p class="frag-desc">Una opción masculina que proyecta seguridad y paz envidiable. Sensorial, limpio y puro, para el hombre que sabe quién es.</p>
+      <p class="frag-desc">Una opción masculina que proyecta seguridad y paz. Sensorial, limpio y puro, para el hombre que sabe quién es.</p>
       <div class="frag-tags"><span class="frag-tag">Hombre</span><span class="frag-tag">Persona</span></div>
     </div>
 
@@ -1210,30 +1304,30 @@
 <section id="ambientes">
   <div class="section-header">
     <p class="section-eyebrow">Modos de Uso</p>
-    <h2 class="section-title">Aromatizá<br><em>cada momento</em></h2>
-    <p class="section-body">Nuestras fragancias están pensadas para acompañarte en todos los ámbitos de tu vida cotidiana.</p>
+    <h2 class="section-title">Aromatiza<br><em>cada momento</em></h2>
+    <p class="section-body">Nuestras fragancias están pensadas para acompañarte en todos los momentos de tu día a día.</p>
   </div>
 
   <div class="amb-grid">
     <div class="amb-card reveal">
       <span class="amb-icon">🏡</span>
       <div class="amb-name">Casa</div>
-      <p class="amb-desc">Aplicá en cortinas, alfombras o en el aire para crear una atmósfera de serenidad y revitalización en tu hogar.</p>
+      <p class="amb-desc">Aplica en cortinas, alfombras o en el aire para crear una atmósfera de serenidad en tu hogar.</p>
     </div>
     <div class="amb-card reveal">
       <span class="amb-icon">🚗</span>
       <div class="amb-name">Auto</div>
-      <p class="amb-desc">Convertí cada trayecto en un momento de paz. Fragancias revitalizantes para mantener la mente despejada.</p>
+      <p class="amb-desc">Convierte cada trayecto en un momento de paz. Fragancias revitalizantes para mantener la mente despejada.</p>
     </div>
     <div class="amb-card reveal">
       <span class="amb-icon">👗</span>
       <div class="amb-name">Ropa</div>
-      <p class="amb-desc">Llevá la frescura todo el día. Una sutil bruma sobre tus prendas para que el aroma te acompañe en cada paso.</p>
+      <p class="amb-desc">Lleva la frescura todo el día. Una bruma suave sobre tus prendas para que el aroma te acompañe.</p>
     </div>
     <div class="amb-card reveal">
       <span class="amb-icon">✨</span>
       <div class="amb-name">Persona</div>
-      <p class="amb-desc">La conexión definitiva. Elegí la fragancia que más resuene con tu alma y convertila en tu sello personal.</p>
+      <p class="amb-desc">La conexión definitiva. Elige la fragancia que más resuene contigo y conviértela en tu sello personal.</p>
     </div>
   </div>
 </section>
@@ -1246,7 +1340,7 @@
   <div class="section-header">
     <p class="section-eyebrow">Descubre tu Esencia</p>
     <h2 class="section-title">Encuentra<br><em>tu fragancia perfecta</em></h2>
-    <p class="section-body">Responde algunas preguntas sobre tus preferencias emocionales y aromáticas. Nuestro quiz te recomendará la fragancia ideal para ti.</p>
+    <p class="section-body">Responde 6 preguntas sobre tus gustos y emociones. Te recomendaremos la fragancia ideal para ti.</p>
   </div>
 
   <!-- BARRA DE PROGRESO -->
